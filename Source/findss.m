@@ -65,7 +65,7 @@ while 1
         break
     end
     % Update beta - if too low savings (errliq<0), save more
-    param.bet = param.bet*exp(-0.01/50*errliq).*0.9 + ...
+    param.bet = param.bet*exp(-0.1/50*errliq).*0.9 + ...
         param.bet*0.1;
 
 end
