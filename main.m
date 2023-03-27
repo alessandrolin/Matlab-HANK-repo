@@ -22,8 +22,7 @@ declare_parameters
 close
 
 %%  2) Steady State finding
-[ss,hist]    = steady_state(param,config);
-ss1 = ss;
+[ss1,hist]    = steady_state(param,config);
 param.bet    = ss1.bet; 
 close all
 
@@ -31,7 +30,7 @@ close all
 compute_MPCs 
 
 %%  3) Setup Jacobians  
-[J_x_pf,J_be_pf] = setup_jacobian(param,ss,config,param.TTT);
+[J_x_pf,J_be_pf] = setup_jacobian(param,ss1,config,param.TTT);
 save(strcat(config.root,'/Store/J_x_pf',date),'J_x_pf')
 save(strcat(config.root,'/Store/J_be_pf',date),'J_be_pf')
 
