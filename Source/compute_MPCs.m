@@ -5,9 +5,9 @@ T = 50;
 
 %% One Asset 
 % Compute Policy at t=1
-[ga,c,~]  = egm_step(param,ss.R,...
-    ss.v,...
-    ss.Pi,1,ss.t,param.bet,dy,ss);
+[ga,c,~]  = egm_step(param,ss1.R,...
+    ss1.v,...
+    ss1.Pi,1,ss1.t,param.bet,dy,ss);
 
 DD = NaN(param.N_a*param.N_z,T);
 
@@ -17,9 +17,9 @@ L = sparse(subsparser(:,1),subsparser(:,2),subsparser(:,3),param.N_a*param.N_z,p
 for ind_t=1:T
     % Simulate
     if ind_t == 1
-        DD(:,1) = L'*ss.D;  
+        DD(:,1) = L'*ss1.D;  
     else
-        DD(:,ind_t) = ss.L'*DD(:,ind_t-1);
+        DD(:,ind_t) = ss1.L'*DD(:,ind_t-1);
     end
 end 
     
