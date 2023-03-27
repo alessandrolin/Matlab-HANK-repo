@@ -26,11 +26,13 @@ end
 oldtolss = config.tolss;
 config.tolss = config.hightol; 
 
+% note: apply your favorite solver to the function below
 [ss,hist] = findss(guess,config,param,1000);
 close all
 config.tolss = oldtolss;
 
 % Save;
+mkdir('Store')
 save(strcat(config.root,'/Store/ss_file'),'ss')
 save(strcat(config.root,'/Store/param',date),'param')
  
