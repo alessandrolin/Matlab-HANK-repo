@@ -16,7 +16,7 @@ ga_aux = nan(par.N_a,par.N_z,T);
 for ind_t = T:-1:1
     [ga_aux(:,:,ind_t),~,V]  = egm_step(par,R(ind_t),...
         V,...
-        Pi(ind_t),Y(ind_t),t(ind_t),be(ind_t),0,ss);
+        Pi(ind_t),Y(ind_t),t(ind_t),be(ind_t),0);
     VV(:,ind_t)     = reshape(V,par.N_a*par.N_z,1);
     ga(:,ind_t)     = reshape(ga_aux(:,:,ind_t),par.N_a*par.N_z,1);
 end
@@ -34,7 +34,7 @@ for ind_t=1:T
     L = sparse(subsparser(:,1),subsparser(:,2),subsparser(:,3),par.N_a*par.N_z,par.N_a*par.N_z); % generate sparse matrix
     % Simulate
     if ind_t == 1
-        DD(:,1) = L'*D; % D is not ss.D, can differ
+        DD(:,1) = L'*D;
     else
         DD(:,ind_t) = L'*DD(:,ind_t-1);
     end
@@ -43,9 +43,6 @@ end
 V  = VV';
 ga = ga';
 D = DD';
-
-
-
 
 
 

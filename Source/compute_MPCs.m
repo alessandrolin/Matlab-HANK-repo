@@ -7,7 +7,7 @@ T = 50;
 % Compute Policy at t=1
 [ga,c,~]  = egm_step(param,ss1.R,...
     ss1.v,...
-    ss1.Pi,1,ss1.t,param.bet,dy,ss);
+    ss1.Pi,1,ss1.t,param.bet,dy);
 
 DD = NaN(param.N_a*param.N_z,T);
 

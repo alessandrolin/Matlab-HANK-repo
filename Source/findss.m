@@ -32,7 +32,7 @@ while 1
     while errliq>config.tolV
         it2 = it2+1;
         [guess_a_t,guess_c,guess_v]  = egm_step(param,guess_R,guess_v,...
-            param.SPi,1,T0,param.bet,0,ss);
+            param.SPi,1,T0,param.bet,0);
         errliq = max(max(abs(guess_a-guess_a_t)));
         guess_a = guess_a_t;
     end
