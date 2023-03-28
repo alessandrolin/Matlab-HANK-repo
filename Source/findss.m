@@ -4,9 +4,7 @@
 
 %created b mp 30/3/2022
 function[ss,hist] = findss(guess,config,param,maxout_iter)
-%   Simplify:
-na = param.N_a;
-nz = param.N_z;
+
 %   Assign Guesses
 guess_R     = guess.R;
 guess_a     = guess.a;
