@@ -1,4 +1,4 @@
-function [J_x,J_be] = setup_jacobian(param,ss,config,T)
+function [J_x,J_be] = setup_jacobian(param,ss,T)
 % This function generates the jacobian matrices
 jac.base = sparse(param.nX*T,param.nX*T);
 %%  BLOCKS
@@ -7,7 +7,7 @@ jac.base = sparse(param.nX*T,param.nX*T);
 %   PC,             0 = beta Pi(t+1) + kappa Y(t) - Pi(t) 
 %   Gov BC,         0 = b/Pi^2*Pi(t)-b(t-1)/Pi+b(t)/R-b/R^2*R(t)+tau(t) -
 %   (-egy *Y(t))
-%   Fiscal Rule     0 = Bt - (1-rhob)*B(t-1) + eby*Y(t)
+%   Fiscal Rule     0 = Bt 
 %   Asset M Clear   0 = At - Bt
 %   Monetary aggregate
 %   Taylor Rule,

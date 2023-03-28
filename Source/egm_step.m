@@ -1,6 +1,5 @@
-function [A0,c0,v0] = egm_step(par,R0,F1,Pi0,Y0,T0,bet,dy,ss)
+function [A0,c0,v0] = egm_step(par,R0,F1,Pi0,Y0,T0,bet,dy)
 
-P_z = par.P_z;  
 z_g = par.z_g;  
 
 c0  = max(0,(bet*(R0*F1*par.P_z')).^(1/(-par.sig)));

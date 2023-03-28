@@ -30,14 +30,12 @@ for pm = ["p" "m"]
 
 % tic
     % Preallocate Cells containing indeces;
-    sparser = cell(T,1); % cell object temp used to collect indices and values to be filled in sparse mat
     V   = ss.v;
 
     for ind_t = T:-1:1
         [ga(:,:,ind_t),~,V]  = egm_step(par,R(ind_t),...
             V,...
-            Pi(ind_t),Y(ind_t),t(ind_t),be(ind_t),0,ss);
-        VV(:,ind_t)     = reshape(V,par.N_a*par.N_z,1);
+            Pi(ind_t),Y(ind_t),t(ind_t),be(ind_t),0);
     end
     
     % Compute dD

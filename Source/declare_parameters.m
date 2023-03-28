@@ -1,8 +1,6 @@
 %%  Preferences
 param.bet      = 0.9805;     % discount factor
 param.sig      = 1.5;       % intertemporal elas. substitution
-param.frisch   = 1;
-
 %%  Phillips curve
 param.kap    = 0.01; 
 

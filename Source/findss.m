@@ -4,9 +4,7 @@
 
 %created b mp 30/3/2022
 function[ss,hist] = findss(guess,config,param,maxout_iter)
-%   Simplify:
-na = param.N_a;
-nz = param.N_z;
+
 %   Assign Guesses
 guess_R     = guess.R;
 guess_a     = guess.a;
@@ -32,7 +30,7 @@ while 1
     while errliq>config.tolV
         it2 = it2+1;
         [guess_a_t,guess_c,guess_v]  = egm_step(param,guess_R,guess_v,...
-            param.SPi,1,T0,param.bet,0,ss);
+            param.SPi,1,T0,param.bet,0);
         errliq = max(max(abs(guess_a-guess_a_t)));
         guess_a = guess_a_t;
     end
@@ -65,7 +63,7 @@ while 1
         break
     end
     % Update beta - if too low savings (errliq<0), save more
-    param.bet = param.bet*exp(-0.01/50*errliq).*0.9 + ...
+    param.bet = param.bet*exp(-0.1/50*errliq).*0.9 + ...
         param.bet*0.1;
 
 end
@@ -121,4 +119,3 @@ ss.err2     = err1;
 ss.C   = ss.gc(:)'*D ;
 ss.arc = ss.C-ss.Y;
 
-b=1;
