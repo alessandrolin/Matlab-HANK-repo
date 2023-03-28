@@ -119,4 +119,3 @@ ss.err2     = err1;
 ss.C   = ss.gc(:)'*D ;
 ss.arc = ss.C-ss.Y;
 
-b=1;

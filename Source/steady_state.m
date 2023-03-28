@@ -4,17 +4,17 @@
 %       - calculate the policy function (with endogenous grid method)
 %       - obtain the stationary distribution
 %       - obtain the steady state demand for assets  
-function [ss,hist] = steady_state(param,config);
+function [ss1,hist] = steady_state(param,config);
 global guess
 
 %%  Preallocate - Check if distribution exists
 if isfile(strcat(config.root,'/Store/ss_file.mat'))
     load(strcat(config.root,'/Store/ss_file.mat'))
-    guess.R     = ss.R;
-    guess.a     = ss.ga;  
-    param.bet   = ss.bet;
-    guess.c     = ss.c;
-    guess.v     = ss.v; 
+    guess.R     = ss1.R;
+    guess.a     = ss1.ga;  
+    param.bet   = ss1.bet;
+    guess.c     = ss1.c;
+    guess.v     = ss1.v; 
 else
     guess.R     = 1.025^0.25;        
     guess.a     = param.a_g*0.95+param.z_g'*0.01;
@@ -27,15 +27,15 @@ oldtolss = config.tolss;
 config.tolss = config.hightol; 
 
 % note: apply your favorite solver to the function below
-[ss,hist] = findss(guess,config,param,1000);
+[ss1,hist] = findss(guess,config,param,1000);
 close all
 config.tolss = oldtolss;
 
 % Save;
 mkdir('Store')
-save(strcat(config.root,'/Store/ss_file'),'ss')
+save(strcat(config.root,'/Store/ss_file'),'ss1')
 save(strcat(config.root,'/Store/param',date),'param')
  
 %% Store
-save(strcat(config.root,'/Store/ss_file'),'ss')
+save(strcat(config.root,'/Store/ss_file'),'ss1')
 save(strcat(config.root,'/Store/param',date),'param')
